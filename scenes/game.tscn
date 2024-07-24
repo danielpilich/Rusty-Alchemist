@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlavrej6soac2"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_be8kc"]
+[ext_resource type="PackedScene" uid="uid://blck1xyieh4q6" path="res://scenes/entities/hero.tscn" id="1_gatjc"]
+[ext_resource type="PackedScene" uid="uid://62q5qn0tcvii" path="res://scenes/maps/dirt_map.tscn" id="2_uo4ru"]
+[ext_resource type="FontFile" uid="uid://c30of2ju0448n" path="res://assets/fonts/PixelOperator8.ttf" id="4_5n5nf"]
+[ext_resource type="PackedScene" uid="uid://n07y8lg2n2gu" path="res://scenes/entities/alchemist_kettle.tscn" id="4_gavs0"]
+[ext_resource type="Script" path="res://scripts/day_night.gd" id="8_oqfm2"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_be8kc")
+
+[node name="TileMap" parent="." instance=ExtResource("2_uo4ru")]
+
+[node name="Hero" parent="." instance=ExtResource("1_gatjc")]
+unique_name_in_owner = true
+position = Vector2(-62, -10)
+collision_layer = 2
+
+[node name="Camera2D" type="Camera2D" parent="Hero"]
+zoom = Vector2(4, 4)
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2(66, -125)
+
+[node name="Enemy1" type="Marker2D" parent="Enemy"]
+position = Vector2(559, 17)
+
+[node name="Flowers" type="Node2D" parent="."]
+
+[node name="Flower1" type="Marker2D" parent="Flowers"]
+position = Vector2(-13, 0)
+
+[node name="AlchemistKettle" parent="." instance=ExtResource("4_gavs0")]
+unique_name_in_owner = true
+position = Vector2(-93, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EquipmentLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -68.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_5n5nf")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 2
+
+[node name="Day_night" type="CanvasModulate" parent="."]
+color = Color(0.0352941, 0.113725, 0.227451, 1)
+script = ExtResource("8_oqfm2")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="Timer_enemy" type="Timer" parent="."]
+wait_time = 65.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer_enemy" to="." method="_on_timer_enemy_timeout"]
