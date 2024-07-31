@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjimn0xlhyv18"]
+
+[ext_resource type="Script" path="res://scripts/select_level.gd" id="1_g56in"]
+[ext_resource type="Texture2D" uid="uid://1qtak1mbkb4s" path="res://assets/sprites/logo_9.0_bez.png" id="2_75gku"]
+
+[sub_resource type="SystemFont" id="SystemFont_nrks8"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_v0hmn"]
+font_names = PackedStringArray("Impact")
+
+[node name="select_level" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g56in")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_75gku")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_nrks8")
+theme_override_font_sizes/font_size = 26
+text = "SELECT LEVEL"
+
+[node name="dirt" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_v0hmn")
+theme_override_font_sizes/font_size = 32
+text = "DIRT"
+
+[node name="separator2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="sand" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_v0hmn")
+theme_override_font_sizes/font_size = 32
+text = "SAND"
+
+[node name="separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="back_to_menu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_v0hmn")
+theme_override_font_sizes/font_size = 32
+text = "BACK TO MENU"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/dirt" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/dirt" to="." method="_on_dirt_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/sand" to="." method="_on_sand_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/sand" to="." method="_on_keybinds_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/back_to_menu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/back_to_menu" to="." method="_on_quit_pressed"]

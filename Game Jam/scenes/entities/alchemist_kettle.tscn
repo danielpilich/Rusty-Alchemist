@@ -1,0 +1,169 @@
+[gd_scene load_steps=23 format=3 uid="uid://n07y8lg2n2gu"]
+
+[ext_resource type="Texture2D" uid="uid://davt2ify5jxi" path="res://assets/sprites/kettle.png" id="1_wpig8"]
+[ext_resource type="Script" path="res://scripts/alchemist_kettle.gd" id="1_x388c"]
+[ext_resource type="AudioStream" uid="uid://bygrgtka3mcb6" path="res://assets/sounds/end.wav" id="3_blaou"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2r87f"]
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52m7a"]
+bg_color = Color(0.910422, 0, 0.10194, 1)
+anti_aliasing = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iweau"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qs3e"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8ybv"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdmwm"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlcwo"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pd2c"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db6vt"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybyiy"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtwdo"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(256, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn0jn"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(288, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5wq3"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(320, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jsmk"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(352, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ak6a"]
+atlas = ExtResource("1_wpig8")
+region = Rect2(384, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rbdbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iweau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qs3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8ybv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdmwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlcwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pd2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db6vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybyiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtwdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn0jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5wq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jsmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ak6a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dj0b4"]
+
+[sub_resource type="Gradient" id="Gradient_750nh"]
+offsets = PackedFloat32Array(0, 0.675325)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g71un"]
+gradient = SubResource("Gradient_750nh")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="AlchemistKettle" type="Area2D"]
+position = Vector2(0, 3)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_x388c")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = -1
+offset_left = -15.0
+offset_top = -23.0
+offset_right = -13.0
+offset_bottom = -4.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2r87f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_52m7a")
+max_value = 5.0
+step = 1.0
+fill_mode = 3
+show_percentage = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -21)
+sprite_frames = SubResource("SpriteFrames_rbdbx")
+autoplay = "default"
+frame_progress = 0.475724
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_dj0b4")
+
+[node name="Fire" type="PointLight2D" parent="."]
+position = Vector2(1, -5)
+color = Color(1, 0.835294, 0.254902, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.784314)
+texture = SubResource("GradientTexture2D_g71un")
+
+[node name="Destroyed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_blaou")
+volume_db = -10.0
+pitch_scale = 0.1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

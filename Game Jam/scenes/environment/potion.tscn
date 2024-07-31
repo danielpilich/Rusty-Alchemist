@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjb856sjlduow"]
+
+[ext_resource type="Script" path="res://scripts/potion.gd" id="1_ddpob"]
+[ext_resource type="Texture2D" uid="uid://b7341jdi75xo3" path="res://assets/sprites/world_tileset.png" id="2_v1n6c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7iiyo"]
+radius = 5.0
+
+[sub_resource type="Gradient" id="Gradient_7clt7"]
+offsets = PackedFloat32Array(0, 0.74026)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l825x"]
+gradient = SubResource("Gradient_7clt7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Potion" type="RigidBody2D"]
+position = Vector2(0, -7)
+collision_layer = 2
+mass = 0.05
+angular_velocity = 4.36332
+script = ExtResource("1_ddpob")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("2_v1n6c")
+region_enabled = true
+region_rect = Rect2(3, 52, 10, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_7iiyo")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.19209e-07, 0.5)
+scale = Vector2(0.2, 0.45)
+enable_node_path = NodePath("../CollisionShape2D")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 3)
+color = Color(0.772549, 0.290196, 0.662745, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.784314)
+texture = SubResource("GradientTexture2D_l825x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

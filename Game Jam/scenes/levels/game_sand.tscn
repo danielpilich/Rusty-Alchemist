@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlavrej6soac2"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_be8kc"]
+[ext_resource type="PackedScene" uid="uid://blck1xyieh4q6" path="res://scenes/entities/hero.tscn" id="1_gatjc"]
+[ext_resource type="FontFile" uid="uid://c30of2ju0448n" path="res://assets/fonts/PixelOperator8.ttf" id="4_5n5nf"]
+[ext_resource type="PackedScene" uid="uid://n07y8lg2n2gu" path="res://scenes/entities/alchemist_kettle.tscn" id="4_gavs0"]
+[ext_resource type="Script" path="res://scenes/environment/Day_night.gd" id="8_oqfm2"]
+
+[sub_resource type="Gradient" id="Gradient_6hkx8"]
+offsets = PackedFloat32Array(0, 0.746753)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_awyw3"]
+gradient = SubResource("Gradient_6hkx8")
+width = 160
+height = 96
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_be8kc")
+
+[node name="Hero" parent="." instance=ExtResource("1_gatjc")]
+unique_name_in_owner = true
+position = Vector2(-62, -10)
+collision_layer = 2
+
+[node name="Camera2D" type="Camera2D" parent="Hero"]
+zoom = Vector2(4, 4)
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="AlchemistKettle" parent="." instance=ExtResource("4_gavs0")]
+unique_name_in_owner = true
+position = Vector2(-85, 3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EquipmentLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -68.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_5n5nf")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 2
+
+[node name="exit" type="Button" parent="CanvasLayer"]
+offset_right = 66.0
+offset_bottom = 39.0
+text = "EXIT"
+
+[node name="Day_night" type="CanvasModulate" parent="."]
+color = Color(0.0352941, 0.113725, 0.227451, 1)
+script = ExtResource("8_oqfm2")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="torches" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="torches"]
+position = Vector2(189, 0)
+color = Color(0.895632, 0.935945, 0.258707, 1)
+energy = 0.75
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.784314)
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_awyw3")
+texture_scale = 1.5
+
+[node name="PointLight2D2" type="PointLight2D" parent="torches"]
+position = Vector2(355, -33)
+color = Color(0.895632, 0.935945, 0.258707, 1)
+energy = 0.75
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.784314)
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_awyw3")
+texture_scale = 1.5
+
+[node name="PointLight2D3" type="PointLight2D" parent="torches"]
+position = Vector2(528, -16)
+color = Color(0.895632, 0.935945, 0.258707, 1)
+energy = 0.75
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.784314)
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_awyw3")
+texture_scale = 1.5
+
+[node name="PointLight2D4" type="PointLight2D" parent="torches"]
+position = Vector2(725, 0)
+color = Color(0.895632, 0.935945, 0.258707, 1)
+energy = 0.75
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.784314)
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_awyw3")
+texture_scale = 1.5
+
+[connection signal="pressed" from="CanvasLayer/exit" to="." method="_on_exit_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
