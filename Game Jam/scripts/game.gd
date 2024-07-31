@@ -3,6 +3,7 @@ extends Node2D
 const DIRT_MAP = preload("res://scenes/maps/dirt_map.tscn")
 const SAND_MAP = preload("res://scenes/maps/sand_map.tscn")
 
+@onready var night_timer = $CanvasLayer/NightTimer
 @onready var timer = %Timer
 @onready var day_night = $Day_night
 
@@ -15,6 +16,9 @@ func _ready():
 	map_instance = maps[variant].instantiate()
 	add_child(map_instance)	
 	
+func _process(delta):
+	night_timer.text = "Night will come in:%.f" % map_instance.timer.time_left
+
 func reset():
 	Engine.time_scale = 0.5
 	day_night.game_end = true

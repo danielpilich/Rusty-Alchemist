@@ -278,34 +278,34 @@ metadata/_edit_group_ = true
 [node name="Flowers" type="Node2D" parent="."]
 
 [node name="Flower1" type="Marker2D" parent="Flowers"]
-position = Vector2(13, -1)
+position = Vector2(632, -240)
 
 [node name="Flower2" type="Marker2D" parent="Flowers"]
-position = Vector2(463, -2)
+position = Vector2(648, 0)
 
 [node name="Flower3" type="Marker2D" parent="Flowers"]
-position = Vector2(831, -225)
+position = Vector2(831, -224)
 
 [node name="Flower4" type="Marker2D" parent="Flowers"]
-position = Vector2(480, -145)
+position = Vector2(484, -144)
 
 [node name="Flower5" type="Marker2D" parent="Flowers"]
-position = Vector2(2879, -305)
+position = Vector2(2876, -304)
 
 [node name="Flower6" type="Marker2D" parent="Flowers"]
-position = Vector2(1456, -321)
+position = Vector2(1456, -320)
 
 [node name="Flower7" type="Marker2D" parent="Flowers"]
-position = Vector2(1984, -385)
+position = Vector2(1984, -384)
 
 [node name="Flower8" type="Marker2D" parent="Flowers"]
-position = Vector2(2403, -59)
+position = Vector2(2407, -64)
 
 [node name="Flower9" type="Marker2D" parent="Flowers"]
-position = Vector2(1184, -33)
+position = Vector2(1176, -32)
 
 [node name="Flower10" type="Marker2D" parent="Flowers"]
-position = Vector2(1904, 111)
+position = Vector2(1896, 112)
 
 [node name="Enemy" type="Node2D" parent="."]
 position = Vector2(66, -125)
@@ -314,7 +314,7 @@ position = Vector2(66, -125)
 position = Vector2(752, 115)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 150.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

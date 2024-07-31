@@ -162,8 +162,6 @@ texture = SubResource("GradientTexture2D_g71un")
 
 [node name="Destroyed" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_blaou")
-volume_db = -10.0
-pitch_scale = 0.1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

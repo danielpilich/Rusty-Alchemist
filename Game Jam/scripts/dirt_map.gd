@@ -28,8 +28,14 @@ func _ready():
 	flower_instantiate.fill(null)
 	timer.autostart = true
 	timer.start()
+	generate_flowers()
 
 func _on_timer_timeout():
+	generate_enemies()
+	await get_tree().create_timer(1).timeout
+	generate_flowers()
+
+func generate_flowers():
 	var flower_counter = 0
 	for i in 10:
 		if flower_instantiate[i] == null:
@@ -37,9 +43,10 @@ func _on_timer_timeout():
 			flower_instantiate[i].global_position = flower_spawner[flower_counter].global_position
 			add_child(flower_instantiate[i])
 		flower_counter += 1
-			
+		
+func generate_enemies():
 	for i in 10:
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(1).timeout
 		if enemy_instantiate[i] == null:
 			enemy_instantiate[i] = SLIME.instantiate()
 			enemy_instantiate[i].add_to_group("Enemy")

@@ -244,8 +244,9 @@ target_position = Vector2(-13, 0)
 
 [node name="EnemyJumpSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_r4svx")
-max_distance = 64.0
+volume_db = -15.0
+max_distance = 256.0
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_fgkkf")
-max_distance = 256.0
+max_distance = 512.0

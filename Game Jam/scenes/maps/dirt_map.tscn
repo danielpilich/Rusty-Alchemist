@@ -151,34 +151,34 @@ script = ExtResource("2_u0pna")
 [node name="Flowers" type="Node2D" parent="."]
 
 [node name="Flower1" type="Marker2D" parent="Flowers"]
-position = Vector2(29, -1)
+position = Vector2(744, -48)
 
 [node name="Flower2" type="Marker2D" parent="Flowers"]
-position = Vector2(831, -1)
+position = Vector2(920, -192)
 
 [node name="Flower3" type="Marker2D" parent="Flowers"]
-position = Vector2(1120, -1)
+position = Vector2(1113, 0)
 
 [node name="Flower4" type="Marker2D" parent="Flowers"]
-position = Vector2(1800, -305)
+position = Vector2(1800, -304)
 
 [node name="Flower5" type="Marker2D" parent="Flowers"]
-position = Vector2(2407, -513)
+position = Vector2(2407, -512)
 
 [node name="Flower6" type="Marker2D" parent="Flowers"]
-position = Vector2(2808, -97)
+position = Vector2(2808, -96)
 
 [node name="Flower7" type="Marker2D" parent="Flowers"]
-position = Vector2(2983, -306)
+position = Vector2(2983, -304)
 
 [node name="Flower8" type="Marker2D" parent="Flowers"]
-position = Vector2(1632, -369)
+position = Vector2(1631, -368)
 
 [node name="Flower9" type="Marker2D" parent="Flowers"]
-position = Vector2(1120, -209)
+position = Vector2(1120, -208)
 
 [node name="Flower10" type="Marker2D" parent="Flowers"]
-position = Vector2(2321, -305)
+position = Vector2(2313, -304)
 
 [node name="Enemy" type="Node2D" parent="."]
 position = Vector2(66, -125)
@@ -187,7 +187,7 @@ position = Vector2(66, -125)
 position = Vector2(735, 117)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 150.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
